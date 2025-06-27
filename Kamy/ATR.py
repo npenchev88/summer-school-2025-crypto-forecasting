@@ -1,17 +1,13 @@
 import pandas as pd
 
-# Load the Excel file
-file_path = r"C:\Users\Kameliya.Stefanova\OneDrive - INDEAVR\Desktop\ks\ПХД\Summer School\Case\BTC_Historical_Data.xlsx"
-df = pd.read_excel(file_path)
+url = "https://github.com/npenchev88/summer-school-2025-crypto-forecasting/raw/refs/heads/main/resources/data/BTC_Historical_Data.xlsx"
+df = pd.read_excel(url, engine='openpyxl')
 
-# Convert date column to datetime
 df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values('date').reset_index(drop=True)
 
-# Convert price columns to float
 df[['open', 'high', 'low', 'close']] = df[['open', 'high', 'low', 'close']].astype(float)
 
-# Set date as index (optional, useful for time series)
 df.set_index('date', inplace=True)
 
 df['prev_close'] = df['close'].shift(1)
@@ -31,6 +27,6 @@ for period in periods:
 df = df.sort_values('date', ascending=False)  # For display
 
 # Save to Excel (simple)
-df.to_excel("BTC_ATR_results5.xlsx", index=False)
+df.to_excel("BTC_ATR_results.xlsx", index=False)
 
 
