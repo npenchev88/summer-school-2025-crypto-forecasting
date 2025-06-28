@@ -2,3 +2,8 @@ numpy==2.3.1
 pandas==2.2.2
 ipykernel==6.29.3
 jupyterlab==4.2.1
+ta==0.11.0
+arch==7.2.0
+seaborn==0.12.2
+backtrader
+optuna
